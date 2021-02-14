@@ -1,17 +1,17 @@
 import json
 
 from flask import Flask
-from flask import url_for, redirect
+from flask import url_for, redirect, render_template
 from werkzeug.exceptions import abort
 
 app = Flask(__name__)
 
 
-@app.route('/npc/<name>')
+@app.route('/npc/<path:name>')
 def get_npc(name):
     # look for a matching npc and redirect to start dialog
     try:
-        name = name.replace('../', '')
+        name = name.replace('..', '')
         with open('npcs/' + name + '.json') as npcFile:
             npc = json.load(npcFile)
 
@@ -20,14 +20,15 @@ def get_npc(name):
         abort(404)
 
 
-@app.route('/npc/<name>/<dialog>')
+@app.route('/npc/<path:name>/<string:dialog>')
 def get_npc_dialog(name, dialog):
     # look for a matching npc and dialog
     try:
         name = name.replace('../', '')
         with open('npcs/' + name + '.json') as npcFile:
             npc = json.load(npcFile)
+            dialog = npc['dialogs'][dialog]
 
-        return 'NPC %s said: %s' % (npc['name'], npc['dialogs'][dialog]['text'])
+        return render_template('dialog.html', npc=npc, dialog=dialog)
     except:
         abort(404)

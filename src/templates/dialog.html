@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dialog with {{npc.name}}</title>
+</head>
+<body>
+<h1>{{npc.name}}:
+</h1>
+<p>{{dialog.text}}</p>
+<ul>
+    {% for item in dialog.options %}
+        <li>{{item.text}}</li>
+    {% endfor %}
+</ul>
+</body>
+</html>
