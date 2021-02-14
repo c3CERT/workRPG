@@ -7,10 +7,16 @@
 <body>
 <h1>{{npc.name}}:
 </h1>
-<p>{{dialog.text}}</p>
+{{dialog.text|safe}}
 <ul>
     {% for item in dialog.options %}
-        <li>{{item.text}}</li>
+        {% if item.action == "dialog" %}
+            <li><a href="{{item.url}}">{{item.text|safe}}</a></li>
+        {% elif item.action == "url" %}
+            <li><a href="{{item.payload}}" target="_blank">{{item.text|safe}}</a></li>
+        {% else %}
+            <li>{{item.text|safe}}</li>
+        {% endif %}
     {% endfor %}
 </ul>
 </body>

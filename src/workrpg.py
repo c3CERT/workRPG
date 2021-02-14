@@ -1,5 +1,6 @@
 import json
 
+import markdown
 from flask import Flask
 from flask import url_for, redirect, render_template
 from werkzeug.exceptions import abort
@@ -28,6 +29,11 @@ def get_npc_dialog(name, dialog):
         with open('npcs/' + name + '.json') as npcFile:
             npc = json.load(npcFile)
             dialog = npc['dialogs'][dialog]
+            dialog['text'] = markdown.markdown(dialog['text'])
+            for option in dialog['options']:
+                option['text'] = markdown.markdown(option['text'])
+                if option['action'] == "dialog":
+                    option['url'] = url_for('.get_npc_dialog', name=name, dialog=option['payload'])
 
         return render_template('dialog.html', npc=npc, dialog=dialog)
     except:
