@@ -31,5 +31,5 @@ Example NPC: http://127.0.0.1:5000/npc/example
 * Render npc images if given (dialog image > npc image > No image/Placeholder)
 * Play audio if any.
 * Beefed out template
-* Option/way to prompt for a variable (most importantly username)
-* Replacement of variable|username placeholders in dialogs.
+* ~~Option/way to prompt for a variable (most importantly username)~~
+* ~~Replacement of variable|username placeholders in dialogs.~~
