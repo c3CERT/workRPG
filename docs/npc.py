@@ -12,10 +12,11 @@ npc = {
                 'text': 'lorem ipsum',
                 'img': 'imgs/npcs/ex_ample_speaking.png',
                 'audio': 'audio/npcs/ex_ample_start.mp3',
-                'comment': 'This is for internal documentation only.',
+                'comment': 'This is for internal documentation only. Session variables are globally available for all NPCs. You may want to prefix them for indiviual NPCs',
                 'options': [
                     {'text': 'Tell me more...', 'action': 'dialog', 'payload': 'more'},
-                    {'text': 'The website?', 'action': 'url', 'payload': 'https://cert.ccc.de/'}
+                    {'text': 'The website?', 'action': 'url', 'payload': 'https://cert.ccc.de/'},
+                    {'text': 'Prompting for name', 'action': 'prompt', 'payload': {'var':'name', 'next': 'more'}},
                 ]
             },
             'more': {

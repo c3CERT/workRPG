@@ -19,6 +19,14 @@
                     "text": "The website?",
                     "action": "url",
                     "payload": "https://cert.ccc.de/"
+                },
+                {
+                    "text": "Prompting for name",
+                    "action": "prompt",
+                    "payload": {
+                        "var": "name",
+                        "next": "more"
+                    }
                 }
             ]
         },

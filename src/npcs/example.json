@@ -5,7 +5,7 @@
     "start_dialog": "start",
     "dialogs": {
         "start": {
-            "text": "lorem ipsum",
+            "text": "lorem ipsum [name]",
             "img": "imgs/npcs/ex_ample_speaking.png",
             "audio": "audio/npcs/ex_ample_start.mp3",
             "comment": "This is for internal documentation only.",
@@ -19,6 +19,14 @@
                     "text": "The website?",
                     "action": "url",
                     "payload": "https://cert.ccc.de/"
+                },
+                {
+                    "text": "Prompting for name",
+                    "action": "prompt",
+                    "payload": {
+                        "var": "name",
+                        "next": "start"
+                    }
                 }
             ]
         },

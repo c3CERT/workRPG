@@ -14,6 +14,13 @@
             <li><a href="{{item.url}}">{{item.text|safe}}</a></li>
         {% elif item.action == "url" %}
             <li><a href="{{item.payload}}" target="_blank">{{item.text|safe}}</a></li>
+        {% elif item.action == "prompt" %}
+            <li>{{item.text|safe}}
+                <form method="post" action="{{npc.base_url}}/prompt/{{item.payload.var}}">
+                    <p><input type=text name="{{item.payload.var}}">
+                    <p><input type=submit value=Save>
+                </form>
+            </li>
         {% else %}
             <li>{{item.text|safe}}</li>
         {% endif %}
