@@ -2,7 +2,7 @@ import json
 import re
 import markdown
 from flask import Flask
-from flask import url_for, redirect, render_template
+from flask import url_for, redirect, render_template, send_from_directory
 from flask import session, request
 from werkzeug.exceptions import abort
 
@@ -18,11 +18,9 @@ def recursive_lookup(k, d: dict) -> list:
     return []
 
 def replace_placeholders(text: str) -> str:
-    print("replace vars")
     p = re.compile('\[(\w+)\]')
     for var in p.findall(text):
         try:
-            print("try replacing %s" % var)
             text = text.replace('[%s]' % var, session[var])
         except TypeError:
             pass
@@ -85,3 +83,10 @@ def get_npc_dialog(name, dialog):
         return render_template('dialog.html', npc=npc, dialog=dialog)
     except:
         abort(404)
+
+@app.route('/static/<path:path>')
+def send_static(path):
+    return send_from_directory('static', path)
+
+if __name__ == "__main__":
+    app.run()

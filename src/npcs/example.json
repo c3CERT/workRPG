@@ -1,7 +1,7 @@
 {
     "version": 1,
     "name": "Mr. Ex Ample",
-    "image": "imgs/npcs/ex_ample.png",
+    "image": "imgs/npcs/example.png",
     "start_dialog": "start",
     "dialogs": {
         "start": {

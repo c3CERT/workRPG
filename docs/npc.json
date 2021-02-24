@@ -1,14 +1,14 @@
 {
     "version": 1,
     "name": "Mr. Ex Ample",
-    "image": "imgs/npcs/ex_ample.png",
+    "image": "imgs/npcs/example.png",
     "start_dialog": "start",
     "dialogs": {
         "start": {
             "text": "lorem ipsum",
             "img": "imgs/npcs/ex_ample_speaking.png",
             "audio": "audio/npcs/ex_ample_start.mp3",
-            "comment": "This is for internal documentation only.",
+            "comment": "This is for internal documentation only. Session variables are globally available for all NPCs. You may want to prefix them for indiviual NPCs",
             "options": [
                 {
                     "text": "Tell me more...",
